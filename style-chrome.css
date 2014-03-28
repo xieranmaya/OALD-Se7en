@@ -1,0 +1,421 @@
+/*@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(http://fonts.googleapis.com/css?family=Noto+Serif);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Macondo+Swash+Caps);
+@import url(http://fonts.googleapis.com/css?family=Days+One);
+@import url(http://fonts.googleapis.com/css?family=Milonga);
+@import url(http://fonts.googleapis.com/css?family=Faster+One);
+@import url(http://fonts.googleapis.com/css?family=Autour+One);
+@import url(http://fonts.googleapis.com/css?family=Fascinate);
+@import url(http://fonts.googleapis.com/css?family=Combo);*/
+
+
+*{
+	outline:none;
+}
+
+
+html,body{
+	margin:0;
+	padding:0;
+	position:relative;
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	min-width:400px;
+}
+html,body,button,input{
+	font-family: "Milonga";// "Kotta One";
+}
+*[class*=chn],
+*[class*=cn]{
+	font-family: "楷体";
+}
+a{
+	color:inherit;
+	text-decoration:none;
+}
+#main{
+	position:absolute;
+	overflow-x:hidden;
+	top:0px;
+	left:0px;
+	right:0px;
+	bottom:0px;
+}
+#main>div{
+	position:absolute;
+}
+#header{
+	top:0;
+	left:200px;
+	right:400px;
+	background-color:white;
+	height:72px;
+}
+#header>div,
+#history>div:first-child{
+	float:left;
+	margin:24px 10px;
+	height:24px;
+}
+#header>div:last-child{
+	float:right;
+}
+#header>div>button,
+div>button{
+	margin:0;
+	height:25px;
+}
+button#tools-button,
+button#add{
+	border-radius:12px 0 0 12px;
+}
+button#help-button,
+button#settings-button{
+	border-radius:0;
+}
+button#donate,
+button#pron{
+	border-radius:0 12px 12px 0;
+}
+#header>h1{
+	line-height:70px;
+	text-align:center;
+	display:inline-block;
+	float:left;
+}
+button{
+	border-radius: 12px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-user-select: none;
+	background: -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
+	border: 1px solid #aaa;
+	color: #444;
+	font-size: 13px;
+	text-align: center;
+	padding: 3px;
+	display:inline-block;
+}
+button:hover{
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+	background: #ebebeb -webkit-linear-gradient(#fefefe, #f8f8f8 40%, #e9e9e9);
+	border-color: #999;
+	color: #222;
+}
+button:active{
+	box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+	background: #ebebeb -webkit-linear-gradient(#f4f4f4, #efefef 40%, #dcdcdc);
+	color: #333;
+}
+#add,#pron{
+	width:28px;
+}
+#add,#pron,#clearhistory{
+	padding-left:8px;
+	padding-right:8px;
+	margin:0;
+}
+#list,
+#content,
+#history,
+#vocabulary{
+	bottom:0px;
+	box-shadow:inset -3px 0px 8px rgba(0,0,0,0.3)
+}
+#search-outer,
+#search-vocabulary-outer,
+#search-history-outer{
+	position:relative;
+	margin:4px;
+	height:27px;
+}
+#search{
+
+}
+#search,
+#search-vocabulary,
+#search-history{
+//	font-size:18px;
+	line-height:18px;
+	margin:0 4px 0 0px;
+	padding:1px 3px;
+	border:1px solid silver;
+	border-radius:12px 0 0 12px;
+	top: 1px;
+	bottom: 1px;
+	left: 3px;
+	right: 34px;
+	width: 152px;
+	-webkit-appearance: none;
+	position: absolute;
+}
+#search-vocabulary,
+#search-history{
+	margin:0px;
+	right:3px;
+	width:186px;
+	left:3px;
+	border-radius: 12px;
+	outline:none;
+	-webkit-appearance: none; 
+}
+#search:focus,
+#search-vocabulary:focus,
+#search-history:focus{
+	box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);
+	outline:none;
+	border-color:#4D90FE;
+}
+#search-button{
+	margin:0;
+	background-image:url(search.png);
+	background-position:center center;
+	border:1px solid #2F5BB7;
+	padding:1px;
+	width:35px;
+	position: absolute;
+	top: 1px;
+	bottom: 1px;
+	right: 3px;
+	border-radius: 0 12px 12px 0;
+}
+#list,
+#history,
+#vocabulary{
+	-webkit-user-select: none;
+	width:200px;
+	top:0;
+	background:-webkit-linear-gradient(rgba(234, 238, 243, 0.2), #EAEEF3), -webkit-linear-gradient(left, #EAEEF3, #EAEEF3 97%, #D3D7DB);
+}
+#list{
+	left:0;
+}
+#history{
+	right:0;
+}
+#vocabulary{
+	right:200px;
+}
+#list>#list-content,
+#history>#history-content,
+#vocabulary>#vocabulary-content{
+	bottom:0px;
+	top:110px;
+	right:0px;
+	left:0px;
+	position:absolute;
+	overflow-y:auto;
+	-webkit-perspective:200;
+	//background-color: white;
+}
+div.word-list a{
+	display: block;
+	padding: 3px 0;
+	margin-left: 24px;
+	height: 22px;
+	line-height: 22px;
+}
+#list>#list-content{
+	top:110px;
+}
+#list-content>div>a{
+	margin-left:0px;
+}
+#list>h1,
+#history>h1,
+#vocabulary>h1,
+#headword{
+	color:#53637D;
+	line-height:72px;
+	font-size:26px;
+	text-align:end;
+	padding-right:8px;
+	margin-top:0px;
+	margin-bottom:0px;
+	font-weight:normal;
+	text-shadow: white 0 1px 2px;
+}
+#list>#list-content>div,
+#history>#history-content>div,
+#vocabulary>#vocabulary-content>div{
+	font-size:18px;
+	padding:0 0;
+	padding-left:10px;
+	cursor:pointer;
+	color:#426DC9;
+	border-bottom: 1px solid transparent;
+	border-top: 1px solid transparent;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	//background-color: rgb(234,238,243);
+	position: relative;
+}
+#history>#history-content>div,
+#vocabulary>#vocabulary-content>div{
+	padding-left:0px;
+}
+#list>#list-content>div:hover,
+#history>#history-content>div:hover,
+#vocabulary>#vocabulary-content>div:hover{
+	background:-webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
+	border-bottom: 1px solid #8FAAD9;
+	border-top: 1px solid #8FAAD9;
+	color:black;
+}
+
+#history>#history-content>div:hover span,
+#vocabulary>#vocabulary-content>div:hover span{
+	opacity: 1;
+}
+
+#history>#history-content>div span,
+#vocabulary>#vocabulary-content>div span{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 4px;
+	margin: auto;
+	//-webkit-transition: opacity 0.2s ease-in;
+}
+
+
+#list>#list-content>div.current,
+#history>#history-content>div.current,
+#vocabulary>#vocabulary-content>div.current{
+	background:-webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
+	border-bottom: 1px solid #8FAAD9;
+	border-top: 1px solid #8FAAD9;
+	color:black;
+}
+#history-content>div>span.del,
+#vocabulary-content>div>span.del{
+	display:inline-block;
+	color:grey;
+	float:left;
+	width:16px;
+	height:16px;
+	margin:4px;
+	position:relative;
+	top:4px;
+	border-radius:8px;
+	line-height:26px;
+	font-size:21px;
+	background-position:50% 50%;
+	background-image:url(close.png);
+}
+#history-content>div:hover>span.del,
+#vocabulary-content>div:hover>span.del{
+//	display:inline-block;
+}
+#history-content>div>span.del:hover,
+#vocabulary-content>div>span.del:hover{
+	background-color:#ddd;
+	color:white;
+	display:inline-block;
+}
+#content-wrapper{
+
+	background-color:black;
+//	background-image: url(galaxy.jpg);
+	left:200px;
+	right:400px;
+	top:72px;
+	bottom:0px;
+	//overflow-y: scroll;
+	box-shadow:inset 0px 5px 12px rgba(0,0,0,0.3);
+	-webkit-perspective: 1000;
+}
+#content{
+	background-color:transparent;
+	background-color: white;
+	position:absolute;
+	bottom: 0px;
+	top:0px;
+	left:0px;
+	right:0px;
+	padding:15px;
+	//left:200px;
+	//right:400px;
+	//top:72px;
+	min-width:300px;
+	//min-height:500px;
+	overflow:auto;
+	//box-shadow:inset 0px 5px 12px rgba(0,0,0,0.3);
+	-webkit-transition-property: -webkit-transform, opacity;
+	-webkit-transition-duration: 0.25s;
+	-webkit-transition-function: linear;
+}
+#settings,#install,#tools,#help{
+	background-color:black;
+	opacity:0.75;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	border-radius:0;
+	display:none;
+	padding:50px 50px;
+	overflow-y:auto;
+}
+#settings>*,
+#install>*,
+#tools>*,
+#help>*{
+	opacity:1;
+	color: #abc;
+}
+#settings>label,#settings>fieldset{
+	display:block;
+	margin:20px 55px;
+	cursor:pointer;
+}
+#settings label:hover{
+	color:yellow;
+	cursor:pointer;
+}
+#settings fieldset{
+	margin:20px 55px;
+}
+#install>h1{
+	margin:20px 35px;
+	text-align:center;
+}
+.close{
+	cursor:pointer;
+	top:20px;
+	right:50px;
+	position:absolute;
+	display:block;
+}
+#save-settings{
+	color:black;
+	font-family:inherit;
+	padding-left:16px;
+	padding-right:16px;
+	position:absolute;
+//	bottom:50px;
+//	left:50px;
+	font-size: 27px;
+	border-radius: 20px;
+}
+
+#install{
+}
+#install>div{
+	padding:40px;
+}
+#install progress{
+	display:block;
+	width:100%;
+	height:50px;
+}
+#install h2,#install h1{
+	text-align:center;
+}
+#install fieldset{
+	font-size:150%;
+}

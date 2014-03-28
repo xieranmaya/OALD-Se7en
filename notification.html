@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>Oald Se7en - Ebbinghaus Notify</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="oa_genie_style.css" />
+<link rel="stylesheet" href="scroll-bar.css" />
+<link rel="stylesheet" type="text/css" href="notification.css" media="all" />
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="nativeExtend.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="notification.js"></script>
+</head>
+
+<body>
+	<div>
+		<button id="pron_button">
+			<b>♬</b>
+			<audio id="pron_audio" preload="auto" />
+			<audio id="pron_audio2" preload="auto" />
+		</button>
+		<button id="toggle_chn">汉</button>
+		<button id="toggle_example">例</button>
+		<span id="time" style="color:grey;font-size:8px;line-height:24px;float:right;"></span>
+	</div>
+	<a id="word" href="javascript:void(0)"></a>
+	<b>/</b><span id="pron"></span><b>/</b>
+	<div>
+		<span id="chn" class="hide"></span>
+		<div style="font-size:10px;" id="example"></div>
+	</div>
+</body>
+</html>

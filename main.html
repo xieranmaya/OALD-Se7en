@@ -1,0 +1,249 @@
+<!DOCTYPE HTML>
+<html><head>
+<title>Oald Se7en</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="oa_genie_style.css"/>
+<link rel="stylesheet" href="scroll-bar.css"/>
+<link rel="stylesheet" href="style-chrome.css"/>
+<style type="text/css" id="font-style"></style>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div><button id="add" title="Add to Vocabulary">.</button><button id="pron">♬<audio id="pronunciation" preload="auto"/><audio id="pronunciation1" preload="auto"/></button></div>
+			<h1 id="headword"></h1>
+			<div>
+				<button
+				 id="tools-button">Tools</button><button
+				  id="settings-button">Settings</button><button
+				   id="help-button">Help</button><button
+				    id="donate" title="觉得还不错？捐点小钱支持我的开发吧~"><a href="https://me.alipay.com/xieranmaya" target="_blank" style="color:#444;text-decoration:none;">Donate</a></button>
+			</div>
+		</div>
+		<div id="list">
+			<h1>OALD Se7en</h1>
+			<div id="search-outer">
+				<input autofocusss="true" type="search" results="0" id="search" size="12" x-webkit-speech /><button id="search-button"></button>
+			</div>
+			<div id="list-content" class="word-list"></div>
+		</div>
+		<div id="content-wrapper"><div id="content"></div></div>
+		<div id="vocabulary">
+			<h1 title="Click to toggle count.">Vocabulary</h1>
+			<div id="search-vocabulary-outer">
+				<input type="search" results="0" id="search-vocabulary" size="12" placeholder="Filter Vocabulary" />
+			</div>
+			<div id="vocabulary-content" class="word-list helix"></div>
+		</div>
+		<div id="history">
+			<div><button id="clearhistory">Clear</button></div>
+			<h1 title="Click to toggle count.">History</h1>
+			<div id="search-history-outer">
+				<input type="search" results="0" id="search-history" size="12" placeholder="Filter History" />
+			</div>
+			<div id="history-content" class="word-list helix"></div>
+		</div>
+	</div>
+	<div id="settings">
+		<span class="close"><u>[关闭]</u></span>
+		<h1>牛津高阶 - 选项 &nbsp;&nbsp; <button id="save-settings">保存</button></h1>
+		<hr>
+		<label><input type="checkbox" name="autotrad" id="autotrad" /> 自动转换成繁体</label>
+		<label><input type="checkbox" name="autozoom" id="autozoom" /> 关闭自动缩放</label>
+		<label><input type="checkbox" name="nomenu" id="nomenu" /> 关闭右键菜单项(重启浏览器后生效)</label>
+		<label><input type="checkbox" name="autonotify" id="autonotify" /> 开启艾宾浩斯曲线提醒(适合使用电脑有规律的人。重启浏览器后生效)</label>
+		<label><input type="checkbox" name="shortcuts" id="shortcuts" /> 开启快捷键</label>
+		<label><input type="checkbox" name="onlyee" id="onlyee">仅显示英英释义(刷新生效)</label>
+		<fieldset>
+			<legend><label><input type="checkbox" name="randomnotify" id="randomnotify" />开启随机提醒功能(适合每天使用电脑时间不长且时间不固定的人,重启浏览器生效)</label></legend>
+			<div>平均每<input type="text" name="randomnotifyinterval" id="randomnotifyinterval" size="5" style="font-weight:bold" />分钟提醒一次(建议不要太频繁)</div>
+			<div>该功能在您开启Chrome的时段里随机的从生词本中挑选单词进行提醒。提醒频率在实际运行时是随机的，但总体分布将符合您的设置。建议提醒频率不要设置的太高，最好大于15，请勿留空！</div>
+		</fieldset>
+		<fieldset>
+			<style scoped>
+			label{
+				display: block;
+			}
+			</style>
+			<legend>学习词库</legend>
+			<label><input type="checkbox" name="learnox3000" id="learnox3000" /> 学习 <a target="_blank" href="http://oald8.oxfordlearnersdictionaries.com/oxford3000/">Oxford 3000 Word List&trade;(3353词)</a></label>
+			<label><input type="checkbox" name="learnoxacademic" id="learnoxacademic" /> 学习 <a target="_blank" href="http://oald8.oxfordlearnersdictionaries.com/academic/">Oxford Academic Word List(1771词)</a></label>
+			<label><input type="checkbox" name="learntofel" id="learntofel" /> 学习 <a target="_blank" href="http://www.ets.org/toefl">TOFEL词汇(3470词)</a></label>
+			<label><input type="checkbox" name="learncet6" id="learncet6" /> 学习 <a target="_blank">英语六级词汇(1578词)</a></label>
+			<label><input type="checkbox" name="learncet4" id="learncet4" /> 学习 <a target="_blank">英语四级词汇(2970词)</a></label>
+
+		</fieldset>
+		<fieldset>
+			<legend>选择字体</legend>
+			英文字体：<select id="eng_fonts" name="eng_fonts">
+				<!-- <option value="">Roboto Slab</option>
+				<option value="">Noto Serif</option>
+				<option value="">Roboto</option>
+				<option value="">Macondo Swash Caps</option>
+				<option value="">Days One</option>
+				<option value="">Milonga</option>
+				<option value="">Faster One</option>
+				<option value="">Autour One</option> -->
+			</select>
+			中文字体：<select id="chn_fonts" name="chn_fonts">
+				<!-- <option value="">宋体</option>
+				<option value="">微软雅黑</option>
+				<option value="">楷体</option>
+				<option value="">仿宋</option>
+				<option value="">新宋体</option>
+				<option value="">幼园</option>
+				<option value="">方正静蕾简体</option>
+				<option value="">文泉驿微米黑</option> -->
+			</select> 
+			自选英文字体：<input placeholder="自选字体名称" id="eng_font_customize" name="eng_font_customize" type="text" value=""> 
+			<br>
+			想尝试更多英文字体？请至 <a href="https://www.google.com/fonts/" target="_blank">Google Fonts</a> 选择字体后将字体名称(字体名称为每个字体展示区左下角加粗的文字，请不要弄错了哦~)粘贴到自选字体文本框(直接复制就好，前后不要留空格)，如不使用自选字体请务必留空！
+			<br>
+			提示： <br>
+			英文字体来源于 <a href="https://www.google.com/fonts/" target="_blank">Google Fonts</a> 在线字体，需要您能够连网哦~ <br>
+			中文字体均需要你自行安装到您的计算机，<a href="https://www.google.com.hk/search?q=%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93" target="_blank">如何安装字体？</a> <br>
+			正文部分字体：<input type="range" name="font_size" id="font_size" min="0.5" max="2" step="0.05"><span id="font-size-value"></span>
+		</fieldset>
+		<label>注：【学习】功能是指程序将会随机的弹出该词库中的单词，时间间隔由上面设定的频率决定，建议一次只学习一个词库。</label>
+		<style type="text/css" scoped>
+		#settings a:hover{
+			text-decoration: underline;;
+		}
+		</style>
+	</div>
+	<div id="install">
+		<h1>词典正在安装，请稍候...</h1>
+		<hr>
+		<div><progress id="install-progress" max="127" value="0"></progress></div>
+		<h2>数据量较大(50439词条)，请您耐心等待~~~</h3>
+		<div>
+			<h1>趁此机会，学习一下如何使用吧~</h1>
+			<fieldset>
+				<legend>地址栏查询</legend>
+				您可以在地址栏先输入"ox"，然后按Tab键或空格键，接下来输入您想要查询的词语，按回车即可！
+			</fieldset>
+			<fieldset>
+				<legend>右键查询</legend>
+				当您在网页中遇到不认识的单词时，用鼠标选定该单词(双击该单词)，然后对该选定单词点右键，选择右键菜单里的"查看 X 在Oald 7中的解释"(X为您选定的单词)<br>
+				如果您不喜欢该功能，可以在设置中关闭
+			</fieldset>
+			<fieldset>
+				<legend>主界面查询</legend>
+				您可以在Chrome的新标签页面应用栏找到本应用，也可以在使用以上两种方式打开程序后，在左上角的文本框内输入您想要查询的词，按回车确定！
+			</fieldset>
+		</div>
+	</div>
+	<div id="tools">
+		<span class="close"><u>[关闭]</u></span>
+		<h1>工具箱</h1>
+		<hr>
+		<div>
+
+			<a href="export.html" target="_blank">导出</a>
+			<!--div id="export">
+				<textarea name="vocabulary-export" id="vocabulary-export" cols="30" rows="10"></textarea>
+			</div>
+			<div id="import">
+				<textarea name="vocabulary-import" id="vocabulary-import" cols="30" rows="10"></textarea>
+			</div-->
+		</div>
+	</div>
+	<div id="help">
+		<span class="close"><u>[关闭]</u></span>
+		<h1>帮助</h1>
+		<hr>
+		<fieldset>
+			<legend>版权声明</legend>
+			<div>
+				此程序授权给曾经或现在拥有任意一本正版“牛津高阶”系列词典的用户使用，如果你不符合上述条件，请卸载本软件！<br>
+				向《牛津高阶》系列词典的编撰者们致敬！
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>关于</legend>
+			<div>
+				Oald 7 Chrome App采用本地数据库，使您在不用连网的情况下也可以使用牛津高阶<br>
+				1.词典数据来源：牛津高阶英汉双解大辞典第七版繁体版精灵光盘<br>
+				2.发音库来源：Google。所以您需要连网后才可以发音。有少量单词由于特殊原因不能发音，几乎不会影响您的使用。如果你一定要听到不能发音的单词发音，请使用<a href="http://translate.google.cn/?hl=en" target="_blank">Google Translate</a><br>
+				3.请不要连续快速的点击发音按钮，该动作可能导致单词不能发音，需要刷新页面或重启浏览器甚至重启计算机才可恢复。应该是 Chrome 浏览器自身的 Bug。<br>
+				4.单词后显示有红色实心五角星的单词是 <a href="http://oald8.oxfordlearnersdictionaries.com/oxford3000/" target="_blank">Oxford 3000 Words</a> 中的单词
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>快捷键</legend>
+			<div>
+				<table>
+					<tr><td>s.</td><td>查询单词(Search)</td></tr>
+					<tr><td>a.</td><td>增加/删除生词(Append/Remove)</td></tr>
+					<tr><td>p,q.</td><td>发音(Pronunciation)</td></tr>
+					<tr><td>r.</td><td>刷新(Refresh)</td></tr>
+					<tr><td>x.</td><td>关闭(X,Close)</td></tr>
+					<tr><td>f,j.</td><td>下翻页</td></tr>
+					<tr><td>d,k.</td><td>上翻页</td></tr>
+					<tr><td>t.</td><td>到最顶部(Top)</td></tr>
+					<tr><td>b.</td><td>到最底部(Bottom)</td></tr>
+					<tr><td>?.</td><td>显示本帮助</td></tr>
+					<tr><td>Esc.</td><td>关闭本帮助</td></tr>
+				</table>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>查询方式</legend>
+			<div>
+				<fieldset>
+					<legend>1.右键菜单查询</legend>
+					<div>在页面中选定单词后对选定单词点击右键，选择[查看 X 在 Oald 7 中的解释](X是您选定的单词)</div>
+				</fieldset>
+				<fieldset>
+					<legend>2.浏览器地址栏查询</legend>
+					<div>在Chrome地址栏输入"ox"，然后按空格或Tab键，接下来输入您想要查询的单词，回车即可！</div>
+				</fieldset>
+				<fieldset>
+					<legend>3.主界面查询</legend>
+					<div>在搜索栏输入您要查询的单词，列表区域将会实时为您搜索，回车将显示列表中第一个单词的解释，鼠标点击将显示相应单词的解释</div>
+				</fieldset>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>使用技巧</legend>
+			<div>
+				1.中键单击例句可发音 <br>
+				2.中键单击复习窗口内部任意位置可关闭小窗口 <br>
+				3.单击Vocabulary和History可查看记数 <br>
+				4.双击历史记录条目可将单词加入生词表 <br>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>关于艾宾浩斯提醒</legend>
+			<div>
+				开启该功能后，您加入生词表中的单词将会在加入后的<b style="color:yellow">[5分钟，30分钟，12小时，1天，2天，4天，7天，15天]</b>这八个时间点在右下角弹出窗口提示您复习。您可以点击发音按钮发音；如果你需要查看该单词更详细的解释，可以点击该单词，程序会为您打开该单词的解释页面并关闭弹窗。或者您可以直接关闭小弹窗。<br>
+				为了更好的实现提醒功能，Oald 7 Chrome App采用了后台运行的方式，默认情况下，电脑开机后她就会运行。此功能无法在软件中关闭。如果你想要关闭该功能，可以在Chrome的[选项->高级选项]中关闭后台应用程序
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>意见或建议</legend>
+			<div>
+				如果您对本软件有任何意见或建议或发现了软件的Bug，欢迎给我发邮件交流<br>
+				我的邮件地址：<b style="color:yellow">xieranmaya@gmail.com</b>，来信请注明和Oald 7 Chrome App相关~
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>捐赠</legend>
+			<div>
+				如果您觉得Oald 7 Chrome App对您的学习或工作起到了积极的作用，并愿意为此支付一小笔费用，欢迎<a target="_blank" style="color:yellow" href="https://me.alipay.com/xieranmaya">给我捐赠</a>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>版本信息</legend>
+			<div>您正在使用<span id="version"></span>版</div>
+		</fieldset>
+	</div>
+
+<script src="jquery-1.7.1.min.js"></script>
+<!-- <script src="get-jQuery-from-bg.js"></script> -->
+<script src="nativeExtend.js"></script>
+<script src="common.js"></script>
+<script src="oald.js"></script>
+<script src="t.js"></script>
+</body></html>

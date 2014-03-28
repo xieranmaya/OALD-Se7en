@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html><head>
+<title>Oald Se7en</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="oa_genie_style.css" />
+<link rel="stylesheet" href="scroll-bar.css" />
+<link rel="stylesheet" href="style-chrome.css" />
+<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="nativeExtend.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="export.js"></script>
+</head>
+
+<body style="zoom:1;">
+	<p style="color:red">本功能正在开发中~~功能尚不完善~~目前仅能导出单词和中文意思~~</p>
+	<section id="options">
+		headword
+		词性
+
+		<br>
+		例句：
+		一个<input type="radio" name="sentence" id="sentence" value="1" checked="checked">
+		两个<input type="radio" name="sentence" id="sentence" value="2">
+		三个<input type="radio" name="sentence" id="sentence" value="3">
+		所有<input type="radio" name="sentence" id="sentence" value="4">
+		随机<input type="radio" name="sentence" id="sentence" value="0">
+
+		<br>
+
+		例句
+			一个
+			两个
+			三个
+			所有
+		解释
+			第一个意思
+			前两个意思
+			前三个意思
+			所有意思
+			英英解释
+			汉语解释
+		<button id="export-button">Export</button>
+	</section>
+
+	<table id="result" width="100%"></table>
+</body>
+</html>

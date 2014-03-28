@@ -1,0 +1,30 @@
+﻿{
+	"manifest_version": 2,
+	"name": "Oald 7 牛津高阶第七版",
+	"version": "1.907",
+	"description": "牛津高阶 Chrome App，您学习英语的好助手！",
+	"web_accessible_resources": ["icon.gif","learn0.jpg","learn1.jpg","learn2.jpg","learn3.jpg","learn4.jpg","learn5.jpg","learn6.jpg","learn7.jpg","learn8.jpg","learn9.jpg"],
+	"background": {
+		"page":"bg.html"
+	},
+	"omnibox": {
+		"keyword": "ox"
+	},
+	"icons": {
+		"16": "icon16.ico",
+		"32": "icon.gif",
+		"48": "icon.gif",
+		"128": "icon.gif",
+		"256": "icon.gif"
+	},
+	"app": {
+		"launch": {
+			"local_path": "main.html"
+		}
+	},
+	"offline_enabled": true,
+	"permissions": ["notifications", "unlimitedStorage", "contextMenus", "background"],
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+}
+
+
