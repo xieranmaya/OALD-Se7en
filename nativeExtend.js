@@ -77,20 +77,18 @@ Array.prototype.has = function(o){
 }
 Array.prototype.remove = function(o){
 	var count=0;
-	for(var x in this){
-		if(this[x]==o){
-			this.splice(x,1);
-			count++;
+	if(!Array.isArray(o)){
+		for(var x in this){
+			if(this[x]==o){
+				this.splice(x,1);
+				count++;
+			}
 		}
+		return count;
+	}else{
+		return 0;
 	}
-	return count;
 }
-// Array.prototype.each = function(i,o){
-// 	for(var i in this){
-// 		fn(i,this[i]);
-// 	}
-// 	return this;
-// }
 Array.prototype.each = Array.prototype.forEach;
 
 Array.prototype.toLiteral = function(){
@@ -103,12 +101,7 @@ Math.randomInt = function(m,n){
 	return Math.floor(Math.random()*(Math.abs(m-n)+1))+Math.floor(Math.min(m,n));
 }
 Math.randomColor = function(){
-	var hex = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-	var color = "";
-	for(var i = 0;i<6;i++){
-		color += hex[this.randomInt(0,15)];
-	}
-	return "#"+color;
+	return "#"+Math.random().toString(16).substr(2,6).toUpperCase();
 }
 
 function setTimer(fn,time){
@@ -128,15 +121,3 @@ function clearTimer(st){
 		clearTimeout(st);
 	}
 }
-/*function setTimer(callback,date){
-	//not complete...
-	console.log(date);
-	var delay = 0;
-	date = new Date(date);
-	delay = date.getTime() - new Date();
-	console.log(delay);
-	if(delay>=0){
-		return setTimeout(callback,delay);
-	}
-	return null;
-}*/
