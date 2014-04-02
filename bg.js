@@ -3,7 +3,7 @@ if(localStorage.version < chrome.manifest.version || localStorage.version === un
 	var updateinfo = webkitNotifications.createNotification(
 		'icon.gif',
 		'Oald Se7en Chrome App',
-		'您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：1.修复一些中文字体显示不一致\n2.去掉不能同时为多条句子发音的限制\n3.修复Chrome 32中搜索框的显示问题\n点击查看详情'.format(chrome.manifest.version)
+		'您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：1.增加 GRE 和雅思词汇学习表\n2.bug修复，性能优化\n点击查看详情'.format(chrome.manifest.version)
 	);
 
 	updateinfo.onclick = function(){
