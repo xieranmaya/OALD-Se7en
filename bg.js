@@ -16,11 +16,13 @@ if(localStorage.version < chrome.manifest.version || localStorage.version === un
 	localStorage.version = chrome.manifest.version;//更新版本号
 	localStorage.installdate = localStorage.installdate||+new Date();//安装日期
 	localStorage.randomnotifyinterval = localStorage.randomnotifyinterval||"90";//随机弹出单词的间隔，前期版本中没有此选项
-	localStorage.learnox3000 = localStorage.learnox3000||"true";//同上
-	localStorage.learnoxacademic = localStorage.learnoxacademic||"false";//同上
-	localStorage.learntofel =  localStorage.learntofel||"false";//同上
-	localStorage.learncet6 = localStorage.learncet6||"false";
-	localStorage.learncet4 = localStorage.learncet4||"false";
+	for(var i = 0, len = wordlistitem.length; i < len; i++){
+		if(wordlistitem[i][0]=="ox3000"){
+			localStorage["learn"+wordlistitem[i][0]] = localStorage["learn"+wordlistitem[i][0]]||"true";
+		}else{
+			localStorage["learn"+wordlistitem[i][0]] = localStorage["learn"+wordlistitem[i][0]]||"false";
+		}
+	}
 	localStorage.eng_fonts = localStorage.eng_fonts||"Milonga";
 	localStorage.chn_fonts = localStorage.chn_fonts||"仿宋";
 	localStorage.eng_font_customize = localStorage.eng_font_customize||"";
