@@ -368,7 +368,7 @@
 			}
 		}
 		//var soundtext = this.childNodes[0].nodeValue;
-		var soundsrc = "http://translate.google.cn/translate_tts?ie=UTF-8&tl=en&q=%s".format(soundtext.replace(/ /ig,'%20'));
+		var soundsrc = "http://translate.google.cn/translate_tts?ie=UTF-8&tl=en&q=%s".format(encodeURI(soundtext.trim()));
 		console.log(soundsrc);
 		soundsrc = soundsrc.replace(/\"/g,"&quot;");
 		console.log(soundsrc);
