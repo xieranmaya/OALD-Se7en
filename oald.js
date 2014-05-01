@@ -30,6 +30,10 @@
 				db.sql("SELECT count(*) FROM %s".format(displayOnHashNull),[],function(tx,result){
 					var len = result.rows.item(0)['count(*)'];
 					var count = Math.floor(len*Math.random());
+					if(len==0){
+						resolve('hello');
+						return;
+					}
 					db.sql("SELECT * FROM %s LIMIT %s,%s".format(displayOnHashNull,count+1,1),[],function(tx,result){
 						var word = result.rows.item(0).word;
 						resolve(word);
