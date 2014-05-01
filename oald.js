@@ -11,6 +11,7 @@
 		localStorage.autozoom="false";//自动缩放
 		localStorage.randomnotify="false";//自动随机提醒
 		localStorage.randomnotifyinterval="90";//随机提醒及学习频率
+		localStorage.displayOnHashNull="ox3000";//hash为空时显示来自哪里的词汇
 		$("#install").show();
 		init();
 		return;
@@ -23,13 +24,30 @@
 
 	var word = location.hash.substr(1);
 	if(word === ''){
-		word = 'hello';
-		word = chrome.extension.getBackgroundPage().ox3000[Math.floor(Math.random()*1810)];
-		showWord(word);
-		//location.hash = word;
+		new Promise(function(resolve, reject){
+			var displayOnHashNull = 'vocabulary';
+			if(displayOnHashNull == "vocabulary" || displayOnHashNull == "history"){
+				db.sql("SELECT count(*) FROM %s".format(displayOnHashNull),[],function(tx,result){
+					var len = result.rows.item(0)['count(*)'];
+					var count = Math.floor(len*Math.random());
+					db.sql("SELECT * FROM %s LIMIT %s,%s".format(displayOnHashNull,count+1,1),[],function(tx,result){
+						var word = result.rows.item(0).word;
+						resolve(word);
+					});
+				});
+			}else{
+				var wordlist = chrome.extension.getBackgroundPage()[displayOnHashNull];
+				var len = wordlist.length;
+				resolve( wordlist[Math.floor(Math.random()*len)] );
+			}
+		}).then(function(word){
+			console.log(word);
+			showWord(word);
+			// location.hash = word;
+		});
 	}
 
-	search.value=word;
+	search.value=word;//search是搜索框。。。。自己都不记得了。。。。
 	//search.select();
 	showWord(word);
 	updateList(word);
