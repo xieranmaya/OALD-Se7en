@@ -99,10 +99,10 @@
 });
 function timeAgo(duration){
 	if(duration<60*60*1000){
-		return Math.floor(duration/60000)+"分钟前";
+		return Math.round(duration/60000)+"分钟前";
 	}
 	if(duration<24*60*60*1000){
-		return Math.floor(duration/3600000)+"小时前";
+		return Math.round(duration/3600000)+"小时前";
 	}
-	return Math.floor(duration/86400000)+"天前";
+	return Math.round(duration/86400000)+"天前";
 }
