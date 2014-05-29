@@ -1,7 +1,7 @@
 if (localStorage.version < chrome.manifest.version || localStorage.version === undefined) {
     var updateinfo = new Notification('Oald Se7en Chrome App', {
         icon: 'icon.gif',
-        body: '您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：\n1.增加 GRE 和雅思词汇学习表\n2.bug修复，性能优化\n点击查看详情'.format(chrome.manifest.version)
+        body: '您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：\n1.修复提醒失效的问题，请各位务必升级到Chrome最新版本'.format(chrome.manifest.version)
     });
 
     updateinfo.onclick = function() {
