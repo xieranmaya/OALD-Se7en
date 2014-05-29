@@ -1,9 +1,8 @@
 if (localStorage.version < chrome.manifest.version || localStorage.version === undefined) {
-    var updateinfo = Notification.createNotification(
-        'icon.gif',
-        'Oald Se7en Chrome App',
-        '您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：1.增加 GRE 和雅思词汇学习表\n2.bug修复，性能优化\n点击查看详情'.format(chrome.manifest.version)
-    );
+    var updateinfo = new Notification('Oald Se7en Chrome App', {
+        icon: 'icon.gif',
+        body: '您好！Oald Se7en Chrome App 已升级到最新版本(v %s)：\n1.增加 GRE 和雅思词汇学习表\n2.bug修复，性能优化\n点击查看详情'.format(chrome.manifest.version)
+    });
 
     updateinfo.onclick = function() {
         //window.open("main.html");
@@ -11,7 +10,7 @@ if (localStorage.version < chrome.manifest.version || localStorage.version === u
         this.cancel();
     };
 
-    updateinfo.show();
+    //updateinfo.show();
     localStorage.version = chrome.manifest.version; //更新版本号
     localStorage.installdate = localStorage.installdate || +new Date(); //安装日期
     localStorage.randomnotifyinterval = localStorage.randomnotifyinterval || "90"; //随机弹出单词的间隔，前期版本中没有此选项
