@@ -127,9 +127,7 @@ var eng_fonts = [
     "Days One",
     "Milonga",
     "IM Fell English",
-    "Faster One",
     "Combo",
-    "Fascinate",
     "Autour One",
     "Josefin Slab",
     "Quicksand",
@@ -149,4 +147,3 @@ var chn_fonts = [
     "文泉驿微米黑",
     "幼园"
 ];
-
