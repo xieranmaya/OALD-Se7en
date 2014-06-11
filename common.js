@@ -36,7 +36,7 @@ var popup = function(word) {
                 //本次单词的时间与上次时间之差小于500毫秒，判定为双击
                 if (new Date() - lastClickTime < 500) {
                     window.open("main.html#" + word);
-                    this.cancel();
+                    this.close();
                     delete notification;
                     clearTimeout(window.playDelay);
                 } else { //否则判定为单击,500毫秒以后发音
@@ -70,7 +70,7 @@ var popup4learn = function(word) {
         });
         notification.onclick = function() {
             window.open("main.html#" + word);
-            this.cancel();
+            this.close();
         };
     });
 };
