@@ -348,7 +348,17 @@
 	if(localStorage.onlyee == "true"){
 		$font_style.append("[class*=chn]{display:none;}");
 	}
-
+	//仅英英解释下长按1s显示中文意思
+	$("span.oa_d,span.oa_ud,span.oa_x").live("mousedown",function(){
+		if(localStorage.onlyee != "true")return;//仅英英解释下生效
+		var self = this;
+		this.timeout = setTimeout(function(){
+			$("[class*=chn]",self).toggle();
+		},1000);
+	});
+	$("span.oa_d,span.oa_ud,span.oa_x").live("mouseup",function(){
+		clearTimeout(this.timeout);
+	});
 	//英英解释及例句发音
 	$("span.oa_d,span.oa_ud,span.oa_x").live("mousedown",function(){
 		//console.log(event.which);
