@@ -66,6 +66,7 @@ a{
 div>button{
 	margin:0;
 	height:25px;
+	vertical-align: middle;
 }
 button#tools-button,
 button#add{
